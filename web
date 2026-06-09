@@ -1,0 +1,149 @@
+from pathlib import Path
+import zipfile, textwrap, os, json
+
+base = Path("/mnt/data/capstone_github_pages")
+base.mkdir(exist_ok=True)
+
+index_html = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haley Garner | Computer Science Capstone ePortfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav>
+      <h1>Haley Garner</h1>
+      <div class="nav-links">
+        <a href="#about">Self-Assessment</a>
+        <a href="#code-review">Code Review</a>
+        <a href="#enhancements">Enhancements</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero-content">
+      <h2>Computer Science Capstone ePortfolio</h2>
+      <p>
+        This portfolio presents my capstone project, including my professional self-assessment,
+        code review, and three artifact enhancements focused on software design and engineering,
+        algorithms and data structures, and databases.
+      </p>
+      <a class="button" href="#enhancements">View Enhancements</a>
+    </section>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <h2>Professional Self-Assessment</h2>
+      <p>
+        Throughout my Computer Science program, I developed skills in software development,
+        database design, application security, problem solving, and technical communication.
+        My capstone project allowed me to demonstrate these skills by improving an existing
+        warehouse inventory application and turning it into a more complete, professional,
+        and user-focused system.
+      </p>
+      <p>
+        My career goal is to become an ERP developer. This project connects directly to that
+        goal because inventory management, audit tracking, database synchronization, and user
+        access control are common parts of enterprise resource planning systems. The enhancements
+        in this portfolio show my ability to analyze business needs, improve application logic,
+        organize data, and explain technical decisions clearly.
+      </p>
+      <p>
+        <strong>Replace this section with your final self-assessment narrative.</strong>
+      </p>
+      <a class="button secondary" href="documents/self-assessment.pdf" target="_blank">View Self-Assessment</a>
+    </section>
+
+    <section id="code-review" class="section alt">
+      <h2>Code Review</h2>
+      <p>
+        The code review video explains the original state of my artifact, identifies areas for
+        improvement, and outlines the planned enhancements. The review focuses on code structure,
+        security, database design, inventory reconciliation logic, and overall maintainability.
+      </p>
+
+      <div class="video-card">
+        <h3>Code Review Video</h3>
+        <p>Replace the placeholder below with your YouTube, OneDrive, Google Drive, or GitHub video link.</p>
+        <a class="button" href="#" target="_blank">Watch Code Review Video</a>
+      </div>
+    </section>
+
+    <section id="enhancements" class="section">
+      <h2>Capstone Enhancements</h2>
+      <p>
+        My capstone artifact was enhanced in three major areas: software design and engineering,
+        algorithms and data structures, and databases. Each enhancement includes a narrative
+        explaining the purpose of the update, the work completed, and how it demonstrates course outcomes.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Enhancement One: Software Design and Engineering</h3>
+          <p>
+            This enhancement focuses on improving the application’s design, usability, and security.
+            Updates may include login improvements, account creation controls, barcode scanner support,
+            and cleaner user interactions.
+          </p>
+          <a href="documents/enhancement-one-narrative.pdf" target="_blank">View Narrative</a>
+          <a href="#" target="_blank">Watch Enhancement Video</a>
+        </article>
+
+        <article class="card">
+          <h3>Enhancement Two: Algorithms and Data Structures</h3>
+          <p>
+            This enhancement adds logic for inventory reconciliation and discrepancy analysis.
+            Instead of blindly accepting inventory counts, the system compares expected and actual
+            quantities, calculates variance, and flags significant differences.
+          </p>
+          <a href="documents/enhancement-two-narrative.pdf" target="_blank">View Narrative</a>
+          <a href="#" target="_blank">Watch Enhancement Video</a>
+        </article>
+
+        <article class="card">
+          <h3>Enhancement Three: Databases</h3>
+          <p>
+            This enhancement improves the database from a basic storage list into a more structured
+            relational model. Updates include additional metadata fields, audit dates, item descriptions,
+            and improved data organization for reporting.
+          </p>
+          <a href="documents/enhancement-three-narrative.pdf" target="_blank">View Narrative</a>
+          <a href="#" target="_blank">Watch Enhancement Video</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <h2>Project Repository</h2>
+      <p>
+        The source code for my enhanced capstone artifact is available in my GitHub repository.
+        This repository includes the updated application files, database logic, and documentation
+        supporting the final project.
+      </p>
+      <a class="button" href="#" target="_blank">View GitHub Repository</a>
+    </section>
+
+    <section id="contact" class="section contact">
+      <h2>Contact</h2>
+      <p>
+        Thank you for reviewing my Computer Science capstone ePortfolio.
+      </p>
+      <p>
+        <strong>Email:</strong> haleygarner07@gmail.com
+      </p>
+      <p>
+        <strong>GitHub:</strong> <a href="https://github.com/haleygarner07" target="_blank">@haleygarner07</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Haley Garner. Computer Science Capstone ePortfolio.</p>
+  </footer>
+</body>
+</html>
+"""
